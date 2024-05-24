@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App2.Views.ProfilePage"
+             xmlns:vm="clr-namespace:App2.ViewModels"
+             Title="Мой профиль">
+    <StackLayout>
+
+        <StackLayout Padding="40, 20">
+            <Label x:Name="label_date" Text="123" IsVisible="False" TextColor="Black" />
+            <Label x:Name="label" Text="{Binding birthday}" IsVisible="True" TextColor="Black" />
+            <Frame CornerRadius="75" 
+           HeightRequest="150"
+           WidthRequest="150"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                
+                <ImageButton Source="no_photo.png" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           Aspect="Fill"/>
+                <!-- Clicked="OnImageButtonClicked"-->
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Padding="40, 20">
+            
+            <Label Text="Имя" />
+            <Entry x:Name="nameField" />
+            <Label Text="Фамилия" />
+            <Entry x:Name="surnameField"/>
+            <Label Text="Дата рождения" />
+            <DatePicker x:Name="birthdayField" Date="{Binding birthday}" Format="D"
+                        DateSelected="datePicker_DateSelected">
+                <!-- DateSelected="datePicker_DateSelected" Date="{Binding birthday}"-->
+                <DatePicker.MinimumDate>01/01/1920</DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>01/01/2044</DatePicker.MaximumDate>
+            </DatePicker>
+            <Label Text="Пол" />
+            <Picker x:Name="genderField" Title="{Binding Gender}" SelectedIndex="{Binding IdGender}" >
+                <Picker.Items>
+                    <x:String>Женский</x:String>
+                    <x:String>Мужской</x:String>
+                    <x:String>Не скажу</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+
+        <StackLayout VerticalOptions = "EndAndExpand" Background="#ffe0b5" >
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" >
+                <Button Text="Сохранить" CornerRadius="40" Background="Orange" Clicked="SaveItemButton_Clicked" Margin="25, 15"/>
+                <Button Text="Мед. карты" CornerRadius="40" Background="Orange" Clicked="ShowCardButton_Clicked" Margin="25, 15"/>
+            </StackLayout>
+        </StackLayout>
+
+
+
+    </StackLayout>
+</ContentPage>

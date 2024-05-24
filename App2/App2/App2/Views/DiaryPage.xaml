@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App2.Views.DiaryPage"
+             xmlns:vm="clr-namespace:App2.ViewModels"
+             Title="Дневник">
+    <StackLayout>
+        <StackLayout Background="#fa9c2d" >
+            <Button Text="Создайте заметку!" FontSize="22" TextColor="White" Padding="40" HorizontalOptions="Center" Background="#fa9c2d" 
+                    Clicked="ToCommonPage"/>
+        </StackLayout>
+        <StackLayout Padding="20" Spacing ="0" >
+            <!--
+            <Label Text="У Вас пока нет истории изменений." FontSize="15" TextColor="Black" HorizontalOptions="Center" />
+            <Label Text="История появиться здесь." FontSize="15" TextColor="Black" HorizontalOptions="Center" />
+
+            
+            <CollectionView x:Name="itemsCollection" 
+                            SelectionChanged="OnItemSelected"
+                            SelectionMode="Single"
+                            EmptyView="У Вас пока нет истории изменений.
+                          История появиться здесь.">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Date}" />
+                            <Label Text="{Binding Time}" />
+                            <StackLayout HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding Sugar}" VerticalOptions="End" HorizontalOptions="EndAndExpand" />
+                                <Label Text="{Binding When}" VerticalOptions="End" HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            -->
+            
+            <StackLayout>
+                <ListView x:Name="sugarList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"/>
+                                        <Label Text="{Binding Time, StringFormat='{}{0:#####}'}"/> 
+                                        <StackLayout HorizontalOptions="EndAndExpand">
+                                            <Label Text="{Binding Sugar}" VerticalOptions="End" HorizontalOptions="EndAndExpand" />
+                                            <Label Text="{Binding When}" VerticalOptions="End" HorizontalOptions="EndAndExpand" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            
+        </StackLayout>
+        
+
+    </StackLayout>
+</ContentPage>

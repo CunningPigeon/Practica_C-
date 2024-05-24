@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App2.Views.AddNotePage"
+             Title="Запись">
+    <StackLayout>
+        <StackLayout>
+            <Label x:Name="label" Text="DF" IsVisible="False"/>
+            <Label x:Name="label2" Text="{Binding ID}" />
+            <Label x:Name="header_slider" Text="???" FontSize="40" HorizontalOptions="Center" TextColor="Black" />
+            <Slider  Minimum="0" Maximum="150" Value="70" ValueChanged="slider_ValueChanged"
+            MinimumTrackColor="#fa9c2d" MaximumTrackColor="Gray" ThumbColor="#fa9c2d" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="15, 0" >
+            <TimePicker x:Name="timeField" HorizontalOptions="StartAndExpand" Time="12:00:00"/>
+            <DatePicker x:Name="dateField" Date="{Binding date}" Format="D" HorizontalOptions="EndAndExpand" 
+                        DateSelected="datePicker_DateSelected">
+                <DatePicker.MinimumDate>01/01/1920</DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>01/01/2044</DatePicker.MaximumDate>
+            </DatePicker>
+        </StackLayout>
+        <StackLayout Margin="15, 0">
+            
+            <Label Text="Самочувствие" TextColor="Black" FontSize="Medium" />
+            <Picker x:Name="feelingField" >
+                <Picker.Items>
+                    <x:String>Не указано</x:String>
+                    <x:String>Хорошо</x:String>
+                    <x:String>Норма</x:String>
+                    <x:String>Прохо</x:String>
+                </Picker.Items>
+            </Picker>
+            
+            <Label Text="Прием пищи" TextColor="Black" FontSize="Medium" />
+            <Picker x:Name="mealField" >
+                <Picker.Items>
+                    <x:String>Без подробностей</x:String>
+                    <x:String>До еды</x:String>
+                    <x:String>После еды</x:String>
+                    <x:String>Натощак</x:String>
+                    <x:String>Перекусы</x:String>
+                    <x:String>Ночное время</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label Text="Заметка" TextColor="Black" FontSize="Medium" />
+            <Editor x:Name="noteField" Placeholder="Добавить заметку" HeightRequest="200" />
+            
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="EndAndExpand" >
+            <Frame >
+                <Button x:Name="AddItemButt" Text="Сохранить" CornerRadius="40" Background="Orange" HeightRequest="50" Margin="50, 0" 
+                        Clicked="AddItemButt_Clicked"/>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+
+
+</ContentPage>

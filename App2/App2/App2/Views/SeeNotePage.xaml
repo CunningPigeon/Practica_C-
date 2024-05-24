@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App2.Views.SeeNotePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label x:Name="label_date" Text="{Binding Date}" IsVisible="False" />
+                <Label x:Name="label_time" Text="{Binding Time}" IsVisible="False" />
+                <Label x:Name="header_slider" Text="{Binding Sugar}" FontSize="40" HorizontalOptions="Center" TextColor="Black" />
+                <Slider Value="{Binding Sugar}" Minimum="0" Maximum="150" ValueChanged="slider_ValueChanged"
+            MinimumTrackColor="#fa9c2d" MaximumTrackColor="Gray" ThumbColor="#fa9c2d" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="15, 0" >
+                <TimePicker x:Name="timeField" HorizontalOptions="StartAndExpand" />
+                <DatePicker x:Name="dateField" Format="D" HorizontalOptions="EndAndExpand" 
+                        DateSelected="datePicker_DateSelected">
+                    <DatePicker.MinimumDate>01/01/1920</DatePicker.MinimumDate>
+                    <DatePicker.MaximumDate>01/01/2044</DatePicker.MaximumDate>
+                </DatePicker>
+            </StackLayout>
+            <StackLayout Margin="15, 0">
+                <Label Text="Самочувствие" TextColor="Black" FontSize="Medium" />
+                <Picker x:Name="feelingField" Title="{Binding Feeling}" SelectedIndex="{Binding idFeeling}">
+                    <Picker.Items>
+                        <x:String>Не указано</x:String>
+                        <x:String>Хорошо</x:String>
+                        <x:String>Норма</x:String>
+                        <x:String>Прохо</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="Прием пищи" TextColor="Black" FontSize="Medium" />
+                <Picker x:Name="mealField" Title="{Binding When}" SelectedIndex="{Binding idWhen}">
+                    <Picker.Items>
+                        <x:String>Без подробностей</x:String>
+                        <x:String>До еды</x:String>
+                        <x:String>После еды</x:String>
+                        <x:String>Натощак</x:String>
+                        <x:String>Перекусы</x:String>
+                        <x:String>Ночное время</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label Text="Заметка" TextColor="Black" FontSize="Medium" />
+                <Editor x:Name="noteField" Text="{Binding Note}" Placeholder="Добавить заметку" HeightRequest="200" />
+
+            </StackLayout>
+            <!--SaveItemButt_Clicked -->
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                <Button x:Name="SaveItemButt" Text="Сохранить" CornerRadius="40" Background="Orange" HeightRequest="50" Margin="25, 15" 
+                        Clicked="UpItemButt_Clicked" /> 
+                <Button x:Name="DelItemButt" Text="Удалить" CornerRadius="40" Background="Orange" HeightRequest="50" Margin="25, 15" 
+                        Clicked="DelItemButt_Clicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
